@@ -60,7 +60,7 @@ const Header = () => {
                         PERFIL
                       </Link>
 
-                      <Link className="dropdown-item" to="#">
+                      <Link className="dropdown-item" to="/login  ">
                         LOGIN
                       </Link>
                     </div>
@@ -122,7 +122,7 @@ const Header = () => {
                       PERFIL
                     </Link>
 
-                    <Link className="dropdown-item" to="#">
+                    <Link className="dropdown-item" to="/login">
                       LOGIN
                     </Link>
                   </div>
