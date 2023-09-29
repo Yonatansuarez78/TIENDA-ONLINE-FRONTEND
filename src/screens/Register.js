@@ -1,17 +1,19 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from 'react-router-dom';
 import Header from "./../components/Header";
-import axios from "axios"; // Importar Axios
+import { registerRequest } from "../api/auth.js";
 
 const Register = () => {
   window.scrollTo(0, 0);
 
   // Estado para almacenar los datos del formulario
   const [formData, setFormData] = useState({
-    username: "",
+    nombre: "",
     email: "",
     password: "",
   });
+
+  const history = useHistory();
 
   // Función para manejar cambios en los campos de entrada
   const handleInputChange = (event) => {
@@ -27,18 +29,22 @@ const Register = () => {
     event.preventDefault();
 
     try {
-      // Enviar los datos al backend utilizando Axios
-      const response = await axios.post("http://localhost:3000/usuarios", formData);
-      if(response){
-        alert('usuario creado correctamente')
-      } else {
-        alert('ocurrio un error almomento de creacion')
+      // Llama a la función registerRequest en lugar de axios.post
+      const response = await registerRequest(formData);
+
+      if (response.status === 200) {
+        alert('Usuario creado correctamente');
+        load();
       }
       console.log("Respuesta del servidor:", response.data);
     } catch (error) {
       console.error("Error al enviar los datos:", error);
     }
   };
+
+  function load() {
+    history.push("/HomeDasboard");
+  }
 
   return (
     <>
@@ -47,15 +53,17 @@ const Register = () => {
         <form className="Login col-md-8 col-lg-4 col-11" onSubmit={handleSubmit}>
           <input
             type="text"
-            placeholder="Username"
-            id="username"
-            value={formData.username}
+            placeholder="nombre"
+            id="nombre"
+            value={formData.nombre}
+            required
             onChange={handleInputChange}
           />
           <input
             type="email"
             placeholder="Email"
             id="email"
+            required
             value={formData.email}
             onChange={handleInputChange}
           />
@@ -63,6 +71,7 @@ const Register = () => {
             type="password"
             placeholder="Password"
             id="password"
+            required
             value={formData.password}
             onChange={handleInputChange}
           />

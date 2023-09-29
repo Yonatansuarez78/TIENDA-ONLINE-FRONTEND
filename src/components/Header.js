@@ -56,9 +56,9 @@ const Header = () => {
                       <i class="fas fa-user"></i>
                     </button>
                     <div className="dropdown-menu">
-                      <Link className="dropdown-item" to="/profile">
+                      {/* <Link className="dropdown-item" to="/profile">
                         PERFIL
-                      </Link>
+                      </Link> */}
 
                       <Link className="dropdown-item" to="/login  ">
                         LOGIN
@@ -118,9 +118,9 @@ const Header = () => {
                     Hi, Admin
                   </button>
                   <div className="dropdown-menu">
-                    <Link className="dropdown-item" to="/profile">
+                    {/* <Link className="dropdown-item" to="/profile">
                       PERFIL
-                    </Link>
+                    </Link> */}
 
                     <Link className="dropdown-item" to="/login">
                       LOGIN

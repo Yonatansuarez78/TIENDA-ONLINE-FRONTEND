@@ -15,6 +15,9 @@ import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
 import NotFound from "./screens/NotFound";
 
+import HomeDasboard from './components/dasboard/HomeDasboard'
+
+
 const App = () => {
   return (
     <Router>
@@ -29,6 +32,9 @@ const App = () => {
         <Route path="/payment" component={PaymentScreen} />
         <Route path="/placeorder" component={PlaceOrderScreen} />
         <Route path="/order" component={OrderScreen} />
+
+        <Route path="/HomeDasboard" component={HomeDasboard} />
+
         <Route path="*" component={NotFound} />
       </Switch>
     </Router>
