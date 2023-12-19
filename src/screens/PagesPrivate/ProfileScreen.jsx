@@ -1,13 +1,17 @@
 import React from "react";
-import Header from "../components/Header";
-import ProfileTabs from "../components/profileComponents/ProfileTabs";
-import Orders from "./../components/profileComponents/Orders";
+import NavbarPrivate from "../../components/componentesPrivate/NavbarPrivate";
+import Navbar from '../../components/Navbar'
+import ProfileTabs from "./ProfileTabs";
+import Orders from "./Orders";
+import { useAuth } from '../../context/AuthContext'
 
 const ProfileScreen = () => {
+  const { user } = useAuth();
   window.scrollTo(0, 0);
   return (
     <>
-      <Header />
+      <Navbar/>
+      <NavbarPrivate />
       <div className="container mt-lg-5 mt-3">
         <div className="row align-items-start">
           <div className="col-lg-4 p-0 shadow ">
@@ -19,7 +23,7 @@ const ProfileScreen = () => {
                 </div>
                 <div className="author-card-details col-md-7">
                   <h5 className="author-card-name mb-2">
-                    <strong>YONATAN SUAREZ</strong>
+                    <strong>{user.username}</strong>
                   </h5>
                   <span className="author-card-position">
                     <>01 / 01 / 2000</>
@@ -76,7 +80,7 @@ const ProfileScreen = () => {
               role="tabpanel"
               aria-labelledby="v-pills-home-tab"
             >
-              <ProfileTabs />
+              <ProfileTabs user={user}/>
             </div>
             <div
               class="tab-pane fade"

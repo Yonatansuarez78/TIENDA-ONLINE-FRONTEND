@@ -1,13 +1,14 @@
 import React from "react";
 
-const ProfileTabs = () => {
+
+const ProfileTabs = ({user}) => {
   return (
     <>
       <form className="row  form-container">
         <div className="col-md-6">
           <div className="form">
             <label for="account-fn">NOMBRE COMPLETO</label>
-            <input className="form-control" type="text" required />
+            <input className="form-control" type="email" />
           </div>
         </div>
 

@@ -1,0 +1,8 @@
+.custom-dropdown .dropdown-menu {
+    left: -300%;
+    transition: left 0.3s ease;
+}
+
+.custom-dropdown.show .dropdown-menu {
+    left: 0;
+}
