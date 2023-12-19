@@ -21,13 +21,11 @@ const ProfileScreen = () => {
                 <div className="author-card-avatar col-md-5">
                   <img src="./images/user.png" alt="userprofileimage" />
                 </div>
-                <div className="author-card-details col-md-7">
+                <div className="author-card-details col-12 mt-2">
                   <h5 className="author-card-name mb-2">
                     <strong>{user.username}</strong>
                   </h5>
-                  <span className="author-card-position">
-                    <>01 / 01 / 2000</>
-                  </span>
+                  <span className="author-card-position">{user.email}</span>
                 </div>
               </div>
             </div>
