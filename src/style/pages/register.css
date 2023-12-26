@@ -2,3 +2,13 @@
     max-width: 600px;
     margin: 1.75rem auto;
 }
+
+.text-like-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+#form2Example3c {
+    width: 10px;
+}

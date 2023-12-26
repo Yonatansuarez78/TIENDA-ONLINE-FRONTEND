@@ -51,11 +51,12 @@ const Register = () => {
           <input type="password" placeholder="password" {...register("password", { required: true })} />
           {errors.password && (<p className='text-danger' style={{ fontSize: '13px' }}>Contraseña es requerida</p>)}
 
-          <div className="form-check d-flex justify-content-center mb-5">
-            <input className="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
-            <label className="form-check-label" htmlFor="form2Example3"> <a onClick={handleShow}>Aceptar Terminos y condiciones</a>
-            </label>
-
+          <div className="form-check d-flex justify-content-center mb-5 mt-4">
+            <div className="">
+              <input className="form-check-input checkbox" type="checkbox" id="form2Example3c"/>
+              <label className="form-check-label mt-4 ms-3"> <Link onClick={handleShow} className="text-like-link">Aceptar Términos y Condiciones</Link></label>
+            </div>
+  
             <Modal show={showModal} onHide={handleClose} dialogClassName="custom-modal modal-dialog-scrollable">
               <Modal.Header closeButton>
                 <Modal.Title>Términos y Condiciones</Modal.Title>
