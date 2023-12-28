@@ -29,7 +29,9 @@ const App = () => {
       <Router>
         <Routes>
           <Route path="/" element={<HomeScreen />} />
+
           <Route path="/products/:id" element={<SingleProduct />} />
+
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/cart/:id?" element={<CartScreen />} />

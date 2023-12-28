@@ -13,10 +13,8 @@ const ShopSection = () => {
             <div className="col-lg-12 col-md-12 article">
               <div className="shopcontainer row">
                 {products.map((product) => (
-                  <div
-                    className="shop col-lg-4 col-md-6 col-sm-6"
-                    key={product._id}
-                  >
+                  <div className="shop col-lg-4 col-md-6 col-sm-6"
+                    key={product._id}>
                     <div className="border-product">
                       <Link to={`/products/${product._id}`}>
                         <div className="shopBack">
