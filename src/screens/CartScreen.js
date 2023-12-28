@@ -22,7 +22,7 @@ const CartScreen = () => {
           </Link>
         </div> */}
         <div className=" alert alert-info text-center mt-3">
-          Total Cart Products
+          Total de productos del carrito
           <Link className="text-success mx-2" to="/cart">
             (4)
           </Link>
@@ -37,11 +37,11 @@ const CartScreen = () => {
           </div>
           <div className="cart-text col-md-5 d-flex align-items-center">
             <Link to="#">
-              <h4>Nike Girls Shoe</h4>
+              <h4>Zapato Nike Niña</h4>
             </Link>
           </div>
           <div className="cart-qty col-md-2 col-sm-5 mt-md-5 mt-3 mt-md-0 d-flex flex-column justify-content-center">
-            <h6>QUANTITY</h6>
+            <h6>CANTIDAD</h6>
             <select>
               <option>1</option>
               <option>2</option>
@@ -62,12 +62,13 @@ const CartScreen = () => {
         <hr />
         <div className="cart-buttons d-flex align-items-center row">
           <Link to="/" className="col-md-6 ">
-            <button>Continue To Shopping</button>
+            <button>
+              Continuar comprando</button>
           </Link>
           <div className="col-md-6 d-flex justify-content-md-end mt-3 mt-md-0">
             <button>
               <Link to="/shipping" className="text-white">
-                Checkout
+                Verificar
               </Link>
             </button>
           </div>

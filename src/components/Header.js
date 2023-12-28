@@ -36,7 +36,7 @@ const Header = () => {
                 <div className="col-12 d-flex align-items-center">
                   <form className="input-group">
                     <input type="search" className="form-control rounded search" placeholder="Search" />
-                    <button type="submit" className="search-button">search</button>
+                    <button type="submit" className="search-button">Buscar</button>
                   </form>
                 </div>
               </div>
@@ -54,7 +54,7 @@ const Header = () => {
               <div className="col-md-6 col-8 d-flex align-items-center">
                 <form className="input-group">
                   <input type="search" className="form-control rounded search" placeholder="Search" />
-                  <button type="submit" className="search-button">search </button>
+                  <button type="submit" className="search-button">Buscar </button>
                 </form>
               </div>
               <div className="col-md-3 d-flex align-items-center justify-content-end Login-Register">

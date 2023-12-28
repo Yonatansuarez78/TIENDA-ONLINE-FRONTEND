@@ -20,7 +20,7 @@ const OrderScreen = () => {
               </div>
               <div className="col-md-8 center">
                 <h5>
-                  <strong>Customer</strong>
+                  <strong>Cliente</strong>
                 </h5>
                 <p>YONATAN SUAREZ</p>
                 <p>
@@ -39,14 +39,14 @@ const OrderScreen = () => {
               </div>
               <div className="col-md-8 center">
                 <h5>
-                  <strong>Order info</strong>
+                  <strong>Información del pedido</strong>
                 </h5>
-                <p>Shipping: Tanzania</p>
-                <p>Pay method: Paypal</p>
+                <p>Envío: Colombia</p>
+                <p>Método de pago: Paypal</p>
 
                 <div className="bg-info p-2 col-12">
                   <p className="text-white text-center text-sm-start">
-                    Paid on Jan 12 2021
+                    Pagado el 12 de enero de 2023
                   </p>
                 </div>
               </div>
@@ -62,14 +62,14 @@ const OrderScreen = () => {
               </div>
               <div className="col-md-8 center">
                 <h5>
-                  <strong>Deliver to</strong>
+                  <strong>Entregar a</strong>
                 </h5>
                 <p>
-                  Address: Arusha Tz, Ngaramtoni Crater, P.O BOX 1234 Arusha Tz
+                  Dirección: Arusha Tz, Cráter Ngaramtoni, P.O BOX 1234 Arusha Tz
                 </p>
                 <div className="bg-danger p-1 col-12">
                   <p className="text-white text-center text-sm-start">
-                    Not Delivered
+                    No entregado
                   </p>
                 </div>
               </div>
@@ -87,11 +87,11 @@ const OrderScreen = () => {
               </div>
               <div className="col-md-5 col-6 d-flex align-items-center">
                 <Link to={`/`}>
-                  <h6>Girls Nike Shoes</h6>
+                  <h6>Zapato Nike Niñas</h6>
                 </Link>
               </div>
               <div className="mt-3 mt-md-0 col-6 col-md-2  d-flex align-items-center flex-column justify-content-center ">
-                <h4>QUANTITY</h4>
+                <h4>CANTIDAD</h4>
                 <h6>4</h6>
               </div>
               <div className="mt-3 mt-md-0 col-md-2 col-6 align-items-end  d-flex flex-column justify-content-center">
@@ -106,13 +106,13 @@ const OrderScreen = () => {
               <tbody>
                 <tr>
                   <td>
-                    <strong>Products</strong>
+                    <strong>Productos</strong>
                   </td>
                   <td>$234</td>
                 </tr>
                 <tr>
                   <td>
-                    <strong>Shipping</strong>
+                    <strong>Envío</strong>
                   </td>
                   <td>$566</td>
                 </tr>

@@ -23,7 +23,7 @@ const PlaceOrderScreen = () => {
               </div>
               <div className="col-md-8 center">
                 <h5>
-                  <strong>Customer</strong>
+                  <strong>Cliente</strong>
                 </h5>
                 <p>YONATANSUAREZ</p>
                 <p>admin@YONATANSUAREZ@gmail.com</p>
@@ -40,10 +40,10 @@ const PlaceOrderScreen = () => {
               </div>
               <div className="col-md-8 center">
                 <h5>
-                  <strong>Order info</strong>
+                  <strong>Información del pedido</strong>
                 </h5>
-                <p>Shipping: Tanzania</p>
-                <p>Pay method: Paypal</p>
+                <p>Envío: Tanzania</p>
+                <p>Metodo de pago: Paypal</p>
               </div>
             </div>
           </div>
@@ -57,10 +57,10 @@ const PlaceOrderScreen = () => {
               </div>
               <div className="col-md-8 center">
                 <h5>
-                  <strong>Deliver to</strong>
+                  <strong>Entregar a</strong>
                 </h5>
                 <p>
-                  Address: Arusha Tz, Ngaramtoni Crater, P.O BOX 1234 Arusha Tz
+                  Dirección: Arusha Tz, Cráter Ngaramtoni, P.O BOX 1234 Arusha Tz
                 </p>
               </div>
             </div>
@@ -77,11 +77,12 @@ const PlaceOrderScreen = () => {
               </div>
               <div className="col-md-5 col-6 d-flex align-items-center">
                 <Link to={"/"}>
-                  <h6>Girls Nike shoes</h6>
+                  <h6>
+                    Zapatos Nike para niñas</h6>
                 </Link>
               </div>
               <div className="mt-3 mt-md-0 col-md-2 col-6  d-flex align-items-center flex-column justify-content-center ">
-                <h4>QUANTITY</h4>
+                <h4>CANTIDAD</h4>
                 <h6>4</h6>
               </div>
               <div className="mt-3 mt-md-0 col-md-2 col-6 align-items-end  d-flex flex-column justify-content-center ">
@@ -96,13 +97,13 @@ const PlaceOrderScreen = () => {
               <tbody>
                 <tr>
                   <td>
-                    <strong>Products</strong>
+                    <strong>Productos</strong>
                   </td>
                   <td>$345</td>
                 </tr>
                 <tr>
                   <td>
-                    <strong>Shipping</strong>
+                    <strong>Envío</strong>
                   </td>
                   <td>$123</td>
                 </tr>
@@ -122,7 +123,7 @@ const PlaceOrderScreen = () => {
             </table>
             <button type="submit" onClick={placeOrderHandler}>
               <Link to="/order" className="text-white">
-                PLACE ORDER
+                REALIZAR PEDIDO
               </Link>
             </button>
             {/* <div className="my-3 col-12">

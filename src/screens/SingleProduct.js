@@ -26,19 +26,19 @@ const SingleProduct = ({ match }) => {
 
               <div className="product-count col-lg-7 ">
                 <div className="flex-box d-flex justify-content-between align-items-center">
-                  <h6>Price</h6>
+                  <h6>Precio</h6>
                   <span>${product.price}</span>
                 </div>
                 <div className="flex-box d-flex justify-content-between align-items-center">
-                  <h6>Status</h6>
+                  <h6>Estado</h6>
                   {product.countInStock > 0 ? (
-                    <span>In Stock</span>
+                    <span>En stock</span>
                   ) : (
-                    <span>unavailable</span>
+                      <span>indisponible</span>
                   )}
                 </div>
                 <div className="flex-box d-flex justify-content-between align-items-center">
-                  <h6>Reviews</h6>
+                  <h6>Reseñas</h6>
                   <Rating
                     value={product.rating}
                     text={`${product.numReviews} reviews`}
@@ -47,7 +47,7 @@ const SingleProduct = ({ match }) => {
                 {product.countInStock > 0 ? (
                   <>
                     <div className="flex-box d-flex justify-content-between align-items-center">
-                      <h6>Quantity</h6>
+                      <h6>Cantidad</h6>
                       <select>
                         {[...Array(product.countInStock).keys()].map((x) => (
                           <option key={x + 1} value={x + 1}>
@@ -56,7 +56,7 @@ const SingleProduct = ({ match }) => {
                         ))}
                       </select>
                     </div>
-                    <button className="round-black-btn">Add To Cart</button>
+                    <button className="round-black-btn">Añadir a la cesta</button>
                   </>
                 ) : null}
               </div>
@@ -67,8 +67,9 @@ const SingleProduct = ({ match }) => {
         {/* RATING */}
         <div className="row my-5">
           <div className="col-md-6">
-            <h6 className="mb-3">REVIEWS</h6>
-            <Message variant={"alert-info mt-3"}>No Reviews</Message>
+            <h6 className="mb-3">RESEÑAS</h6>
+            <Message variant={"alert-info mt-3"}>
+              Sin reseñas</Message>
             <div className="mb-5 mb-md-3 bg-light p-3 shadow-sm rounded">
               <strong>Admin Doe</strong>
               <Rating />
@@ -82,23 +83,24 @@ const SingleProduct = ({ match }) => {
             </div>
           </div>
           <div className="col-md-6">
-            <h6>WRITE A CUSTOMER REVIEW</h6>
+            <h6>
+              ESCRIBA UNA OPINIÓN DE CLIENTE</h6>
             <div className="my-4"></div>
 
             <form>
               <div className="my-4">
-                <strong>Rating</strong>
+                <strong>Clasificación</strong>
                 <select className="col-12 bg-light p-3 mt-2 border-0 rounded">
-                  <option value="">Select...</option>
-                  <option value="1">1 - Poor</option>
-                  <option value="2">2 - Fair</option>
-                  <option value="3">3 - Good</option>
-                  <option value="4">4 - Very Good</option>
-                  <option value="5">5 - Excellent</option>
+                  <option value="">Seleccionar...</option>
+                  <option value="1">1 - Pobre</option>
+                  <option value="2">2 - Justa</option>
+                  <option value="3">3 - Buena</option>
+                  <option value="4">4 - Muy Buena</option>
+                  <option value="5">5 - Excelente</option>
                 </select>
               </div>
               <div className="my-4">
-                <strong>Comment</strong>
+                <strong>Comentario</strong>
                 <textarea
                   row="3"
                   className="col-12 bg-light p-3 mt-2 border-0 rounded"
@@ -106,17 +108,17 @@ const SingleProduct = ({ match }) => {
               </div>
               <div className="my-3">
                 <button className="col-12 bg-black border-0 p-3 rounded text-white">
-                  SUBMIT
+                  Enviar
                 </button>
               </div>
             </form>
             <div className="my-3">
               <Message variant={"alert-warning"}>
-                Please{" "}
+                Por favor{" "}
                 <Link to="/login">
-                  " <strong>Login</strong> "
+                  " <strong>Inicia sesión</strong> "
                 </Link>{" "}
-                to write a review{" "}
+                escribir una reseña{" "}
               </Message>
             </div>
           </div>
