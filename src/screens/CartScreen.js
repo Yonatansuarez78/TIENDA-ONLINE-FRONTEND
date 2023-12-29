@@ -1,8 +1,15 @@
 import React from "react";
 import Header from "./../components/Header";
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 const CartScreen = () => {
+  const navigate = useNavigate();
+  function Verificar(){
+    navigate('/shipping');
+  }
+
+  
   window.scrollTo(0, 0);
   return (
     <>
@@ -66,11 +73,7 @@ const CartScreen = () => {
               Continuar comprando</button>
           </Link>
           <div className="col-md-6 d-flex justify-content-md-end mt-3 mt-md-0">
-            <button>
-              <Link to="/shipping" className="text-white">
-                Verificar
-              </Link>
-            </button>
+            <button onClick={Verificar}>Verificar</button>
           </div>
         </div>
       </div>

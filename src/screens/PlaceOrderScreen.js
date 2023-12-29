@@ -1,12 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Header from "./../components/Header";
+import { useNavigate } from 'react-router-dom';
 
 const PlaceOrderScreen = () => {
+  const navigate = useNavigate();
   window.scrollTo(0, 0);
 
-  const placeOrderHandler = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
+    navigate('/order');
   };
 
   return (
@@ -121,10 +124,8 @@ const PlaceOrderScreen = () => {
                 </tr>
               </tbody>
             </table>
-            <button type="submit" onClick={placeOrderHandler}>
-              <Link to="/order" className="text-white">
+            <button type="submit" onClick={onSubmit}>
                 REALIZAR PEDIDO
-              </Link>
             </button>
             {/* <div className="my-3 col-12">
                 <Message variant="alert-danger">{error}</Message>
