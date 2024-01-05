@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from './Navbar'
+import { useAuth } from '../context/AuthContext'
 
 const Header = () => {
+  const { user } = useAuth();
+
   return (
     <div>
       <Navbar />
@@ -61,7 +64,7 @@ const Header = () => {
                 <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                   <div class="btn-group" role="group">
                     <button type="button" class="name-button dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                      Hi, Admin
+                      {user ? `Hi, ${user.username}` : "Hi, Admin"}
                     </button>
                     <ul class="dropdown-menu">
                       <li><Link class="dropdown-item" to="/login">Inicia sesion</Link></li>
