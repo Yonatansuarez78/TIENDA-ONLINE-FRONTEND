@@ -1,10 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "./../components/Header";
-import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext'
 
 const PlaceOrderScreen = () => {
+  const { user } = useAuth();
+  console.log(user)
   const navigate = useNavigate();
+
+
   window.scrollTo(0, 0);
 
   const onSubmit = (e) => {
@@ -28,8 +32,8 @@ const PlaceOrderScreen = () => {
                 <h5>
                   <strong>Cliente</strong>
                 </h5>
-                <p>YONATANSUAREZ</p>
-                <p>admin@YONATANSUAREZ@gmail.com</p>
+                <p>{user.username}</p>
+                <p>{user.email}</p>
               </div>
             </div>
           </div>
