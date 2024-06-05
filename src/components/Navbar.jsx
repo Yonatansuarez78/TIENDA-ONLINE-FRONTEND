@@ -9,7 +9,7 @@ function Navbar() {
               <div className="container">
                   <div className="row">
                       <div className="col-md-6 d-flex align-items-center display-none">
-                          <p>+57 3182268916</p>
+                          <p>Colombia</p>
                           <strong className='text-white'>ONLINE STORE.COM</strong>
                       </div>
                       <div className=" col-12 col-lg-6 justify-content-center justify-content-lg-end d-flex align-items-center">
