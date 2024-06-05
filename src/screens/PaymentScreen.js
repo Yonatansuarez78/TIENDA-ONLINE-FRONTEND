@@ -19,11 +19,11 @@ const PaymentScreen = () => {
           <h6>SELECCIONAR FORMA DE PAGO</h6>
           <div className="payment-container">
             <div className="radio-container">
-              <input className="form-check-input" type="radio" value="PayPal" />
+              <input className="form-check-input" type="radio" name="paymentMethod" value="PayPal" required />
               <label className="form-check-label"> PayPal o tarjeta de crédito</label>
             </div>
           </div>
-          <button type="submit">Continuar</button>
+          <button type="submit">Continuar</button>  
         </form>
       </div>
     </>

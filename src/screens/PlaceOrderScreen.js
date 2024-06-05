@@ -1,14 +1,12 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Header from "./../components/Header";
 import { useAuth } from '../context/AuthContext'
+import { useNavigate } from 'react-router-dom';
 
 const PlaceOrderScreen = () => {
-  const { user } = useAuth();
-  console.log(user)
   const navigate = useNavigate();
-
-
+  const { user } = useAuth();
   window.scrollTo(0, 0);
 
   const onSubmit = (e) => {

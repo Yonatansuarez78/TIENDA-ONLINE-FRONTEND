@@ -60,7 +60,7 @@ const Register = () => {
               <label className="form-check-label mt-4 ms-3"> <Link onClick={handleShow} className="text-like-link">Aceptar Términos y Condiciones</Link></label>
             </div>
 
-            <input type="file" {...register("imageUrl ", { required: true })} />
+            {/* <input type="file" {...register("imageUrl ", { required: true })} /> */}
   
             <Modal show={showModal} onHide={handleClose} dialogClassName="custom-modal modal-dialog-scrollable">
               <Modal.Header closeButton>
