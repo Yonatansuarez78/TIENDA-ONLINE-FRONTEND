@@ -3,11 +3,16 @@ import { Link } from "react-router-dom";
 import Header from "./../components/Header";
 import { useAuth } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const PlaceOrderScreen = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   window.scrollTo(0, 0);
+  const location = useLocation();
+
+  const shippingData = location.state && location.state.shippingData;
+  console.log(shippingData)
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -47,8 +52,10 @@ const PlaceOrderScreen = () => {
                 <h5>
                   <strong>Información del pedido</strong>
                 </h5>
-                <p>Envío: Tanzania</p>
-                <p>Metodo de pago: Paypal</p>
+                <p>Pais: {shippingData.country}</p>
+                <p>Ciudad: {shippingData.city} </p>
+                <p>direccion: {shippingData.address} </p>
+                <p>Codigo postal: {shippingData.postalCode} </p>
               </div>
             </div>
           </div>
@@ -63,10 +70,8 @@ const PlaceOrderScreen = () => {
               <div className="col-md-8 center">
                 <h5>
                   <strong>Entregar a</strong>
+                  <p>{user.username}</p>
                 </h5>
-                <p>
-                  Dirección: Arusha Tz, Cráter Ngaramtoni, P.O BOX 1234 Arusha Tz
-                </p>
               </div>
             </div>
           </div>
