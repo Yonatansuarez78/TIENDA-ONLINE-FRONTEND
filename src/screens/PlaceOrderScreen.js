@@ -5,6 +5,8 @@ import { useAuth } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
+import '../style/pages/placeorderscreen.css'
+
 const PlaceOrderScreen = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -36,7 +38,7 @@ const PlaceOrderScreen = () => {
                   <strong>Cliente</strong>
                 </h5>
                 <p>{user.username}</p>
-                <p>{user.email}</p>
+                <img src={`${process.env.PUBLIC_URL}/images/user.png`} alt="User Avatar" className="ImgUser"/> 
               </div>
             </div>
           </div>
@@ -68,10 +70,9 @@ const PlaceOrderScreen = () => {
                 </div>
               </div>
               <div className="col-md-8 center">
-                <h5>
-                  <strong>Entregar a</strong>
+                <h5><strong>Entregar a</strong></h5>
                   <p>{user.username}</p>
-                </h5>
+                  <p>{user.email}</p>
               </div>
             </div>
           </div>
