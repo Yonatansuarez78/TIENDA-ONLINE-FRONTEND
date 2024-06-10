@@ -47,7 +47,8 @@ const SingleProduct = () => {
 
   const handleClick = () => {
     if (!user) {    // Verificar si el usuario está autenticado
-      navigate('/login'); // Redirigir al usuario a la página de inicio de sesión
+      // navigate('/login'); // Redirigir al usuario a la página de inicio de sesión
+      navigate('/shipping', { state: { shippingData: updatedShippingData } });
       return null;
     } else {
       navigate('/shipping', { state: { shippingData: updatedShippingData} });
