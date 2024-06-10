@@ -1,4 +1,5 @@
 import React from "react";
+import products from "../data/Products";
 import { Link } from "react-router-dom";
 import Header from "./../components/Header";
 import { useAuth } from '../context/AuthContext'
@@ -7,6 +8,7 @@ import { useLocation } from 'react-router-dom';
 
 import '../style/pages/placeorderscreen.css'
 
+
 const PlaceOrderScreen = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -14,7 +16,8 @@ const PlaceOrderScreen = () => {
   const location = useLocation();
 
   const shippingData = location.state && location.state.shippingData;
-  console.log(shippingData)
+  const selectedProduct = products.find(product => product._id === shippingData.selectedProduct);
+  console.log(shippingData, selectedProduct)
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -57,7 +60,7 @@ const PlaceOrderScreen = () => {
                 <p>Pais: {shippingData.country}</p>
                 <p>Ciudad: {shippingData.city} </p>
                 <p>direccion: {shippingData.address} </p>
-                <p>Codigo postal: {shippingData.postalCode} </p>
+                <p>paymentMethod: {shippingData.paymentMethod} </p>
               </div>
             </div>
           </div>
@@ -84,21 +87,14 @@ const PlaceOrderScreen = () => {
 
             <div className="order-product row">
               <div className="col-md-3 col-6">
-                <img src="/images/8.png" alt="product" />
+                <img src={selectedProduct.image} alt="product" />
               </div>
               <div className="col-md-5 col-6 d-flex align-items-center">
-                <Link to={"/"}>
-                  <h6>
-                    Zapatos Nike para niñas</h6>
-                </Link>
+                  <h6>{selectedProduct.name}</h6>
               </div>
               <div className="mt-3 mt-md-0 col-md-2 col-6  d-flex align-items-center flex-column justify-content-center ">
                 <h4>CANTIDAD</h4>
-                <h6>4</h6>
-              </div>
-              <div className="mt-3 mt-md-0 col-md-2 col-6 align-items-end  d-flex flex-column justify-content-center ">
-                <h4>SUBTOTAL</h4>
-                <h6>$567</h6>
+                <h6>{shippingData.countInStock}</h6>
               </div>
             </div>
           </div>
@@ -108,27 +104,9 @@ const PlaceOrderScreen = () => {
               <tbody>
                 <tr>
                   <td>
-                    <strong>Productos</strong>
-                  </td>
-                  <td>$345</td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong>Envío</strong>
-                  </td>
-                  <td>$123</td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong>Tax</strong>
-                  </td>
-                  <td>$5</td>
-                </tr>
-                <tr>
-                  <td>
                     <strong>Total</strong>
                   </td>
-                  <td>$5678</td>
+                  <td>{selectedProduct.price}</td>
                 </tr>
               </tbody>
             </table>

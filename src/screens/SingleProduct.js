@@ -8,6 +8,8 @@ import { useAuth } from "../context/AuthContext";
 const SingleProduct = () => {
   const [countInStock, setCountInStock] = useState(1); // state de productos en countInStock
   const [isButtonDisabled, setIsButtonDisabled] = useState(false); //state desactivar button
+  const [shippingData, setShippingData] = useState(); // estado para manejar el pedido
+
 
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -34,13 +36,21 @@ const SingleProduct = () => {
     );
   }
 
+  // Agrega el método de pago al objeto shippingData
+  const updatedShippingData = {
+    ...shippingData,
+    countInStock: countInStock,
+    selectedProduct: selectedProduct._id
+  };
+
+
 
   const handleClick = () => {
     if (!user) {    // Verificar si el usuario está autenticado
       navigate('/login'); // Redirigir al usuario a la página de inicio de sesión
       return null;
     } else {
-      navigate('/shipping');
+      navigate('/shipping', { state: { shippingData: updatedShippingData} });
     }
   };
 
@@ -51,6 +61,7 @@ const SingleProduct = () => {
 
   const handleChange = (event) => {
     const value = parseInt(event.target.value, 10);
+    setShippingData({ ...shippingData });
     setCountInStock(value);
   };
 
