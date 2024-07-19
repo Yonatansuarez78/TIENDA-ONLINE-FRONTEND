@@ -12,7 +12,6 @@ import ShippingScreen from './screens/ShippingScreen';
 import ProfileScreen from './screens/PagesPrivate/ProfileScreen';
 import PaymentScreen from './screens/PaymentScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
-import OrderScreen from './screens/OrderScreen';
 import NotFound from './screens/NotFound'
 
 import { AuthProvider } from './context/AuthContext'
@@ -38,7 +37,6 @@ const App = () => {
           <Route path="/shipping" element={<ShippingScreen />} />
           <Route path="/payment" element={<PaymentScreen />} />
           <Route path="/placeorder" element={<PlaceOrderScreen />} />
-          <Route path="/order" element={<OrderScreen />} />
           <Route path="*" element={<NotFound />} />
 
 

@@ -5,6 +5,7 @@ import Header from "./../components/Header";
 import { useAuth } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import { PayPalButton } from "react-paypal-button-v2";
 
 import '../style/pages/placeorderscreen.css'
 
@@ -21,7 +22,12 @@ const PlaceOrderScreen = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    navigate('/order');
+    // Agrega el método de pago al objeto shippingData
+    const updatedShippingData = {
+      ...shippingData
+    };
+    console.log(shippingData)
+    // navigate('/order', { state: { shippingData: updatedShippingData } });
   };
 
   return (
@@ -103,16 +109,29 @@ const PlaceOrderScreen = () => {
             <table className="table table-bordered">
               <tbody>
                 <tr>
-                  <td>
-                    <strong>Total</strong>
-                  </td>
+                  <td><strong>Precio unitario</strong></td>
                   <td>{selectedProduct.price}</td>
+                </tr>
+                <tr>
+                  <td><strong>Precio total</strong></td>
+                  <td>{selectedProduct.price * shippingData.countInStock}</td>
+                </tr>
+                <tr>
+                  <td><strong>iva</strong></td>
+                  <td>19%</td>
+                </tr>
+                <tr>
+                  <td><strong>Total</strong></td>
+                  <td>{((selectedProduct.price * shippingData.countInStock) * 1.19)}</td>
                 </tr>
               </tbody>
             </table>
             <button type="submit" onClick={onSubmit}>
                 REALIZAR PEDIDO
             </button>
+            {/* <div className="col-12">
+              <PayPalButton amount={345} onClick={onSubmit} type="submit"/>
+            </div> */}
             {/* <div className="my-3 col-12">
                 <Message variant="alert-danger">{error}</Message>
               </div> */}
