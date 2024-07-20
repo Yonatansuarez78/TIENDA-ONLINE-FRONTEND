@@ -39,28 +39,32 @@
 import React, { useState } from "react";
 import Header from "./../components/Header";
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useOrder } from '../context/OrderContext';
 
 const PaymentScreen = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const shippingData = location.state && location.state.shippingData;
 
-  const [paymentMethod, setPaymentMethod] = useState(""); // Estado local para el método de pago
+  const { setOrder } = useOrder();
+  const navigate = useNavigate();
+  const [metodoPago, setMetodoPago] = useState('');
+  const location = useLocation();
+
+  // const onSubmit = (e) => {
+  //   e.preventDefault();
+  //   const updatedShippingData = {
+  //     ...shippingData,
+  //     paymentMethod: paymentMethod
+  //   };
+
+  //   navigate('/placeorder', { state: { shippingData: updatedShippingData } });
+  // };
 
   const onSubmit = (e) => {
     e.preventDefault();
-
-    // Agrega el método de pago al objeto shippingData
-    const updatedShippingData = {
-      ...shippingData,
-      paymentMethod: paymentMethod
-    };
-
-    navigate('/placeorder', { state: { shippingData: updatedShippingData } });
-  };
-
-  const handlePaymentChange = (e) => {
-    setPaymentMethod(e.target.value);
+    setOrder(prevOrder => ({
+      ...prevOrder,
+      metodo_pago: metodoPago
+    }));
+    navigate('/placeorder');
   };
 
   return (
@@ -75,12 +79,36 @@ const PaymentScreen = () => {
                 className="form-check-input"
                 type="radio"
                 name="paymentMethod"
+                id="paypal"
                 value="PayPal"
-                checked={paymentMethod === "PayPal"}
-                onChange={handlePaymentChange}
+                onChange={(e) => setMetodoPago(e.target.value)}
                 required
               />
-              <label className="form-check-label"> PayPal o tarjeta de crédito</label>
+              <label className="form-check-label" htmlFor="paypal"> PayPal o tarjeta de crédito</label>
+            </div>
+            <div className="radio-container">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="paymentMethod"
+                id="Efectivo"
+                value="Efectivo"
+                onChange={(e) => setMetodoPago(e.target.value)}
+                required
+              />
+              <label className="form-check-label" htmlFor="stripe">Efectivo</label>
+            </div>
+            <div className="radio-container">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="paymentMethod"
+                id="stripe"
+                value="Tarjeta"
+                onChange={(e) => setMetodoPago(e.target.value)}
+                required
+              />
+              <label className="form-check-label" htmlFor="stripe">Tarjeta</label>
             </div>
             {/* Agrega más opciones de método de pago si es necesario */}
           </div>

@@ -15,6 +15,7 @@ import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import NotFound from './screens/NotFound'
 
 import { AuthProvider } from './context/AuthContext'
+import { OrderProvider } from './context/OrderContext'
 
 import ProtectedRoute from './ProtectedRoute'
 import HomeProducts from './screens/PagesPrivate/HomeProducts'
@@ -25,6 +26,7 @@ import Profile from './screens/PagesPrivate/Profile'
 const App = () => {
   return (
     <AuthProvider>
+      <OrderProvider>
       <Router>
         <Routes>
           <Route path="/" element={<HomeScreen />} />
@@ -50,6 +52,7 @@ const App = () => {
 
         </Routes>
       </Router>
+        </OrderProvider>
     </AuthProvider>
   );
 };

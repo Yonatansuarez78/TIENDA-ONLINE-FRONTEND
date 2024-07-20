@@ -3,26 +3,28 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import Rating from "../components/homeComponents/Rating";
 import products from "../data/Products";
 import Header from "./../components/Header";
-import { useAuth } from "../context/AuthContext"; 
+
+import { useAuth } from "../context/AuthContext";
+import { useOrder } from '../context/OrderContext';
 
 const SingleProduct = () => {
   const [countInStock, setCountInStock] = useState(1); // state de productos en countInStock
   const [isButtonDisabled, setIsButtonDisabled] = useState(false); //state desactivar button
-  const [shippingData, setShippingData] = useState(); // estado para manejar el pedido
-
 
   const { user } = useAuth();
+  const { setOrder } = useOrder();
   const navigate = useNavigate();
   const { id } = useParams();
 
   // Buscar el producto en base al ID proporcionado en la ruta
   const selectedProduct = products.find((p) => p._id === id);
 
+  // Actualiza el estado del botón basado en countInStock
   useEffect(() => {
-    if (selectedProduct.countInStock == 0)
-    setIsButtonDisabled(true);
-  }, []);
-
+    if (selectedProduct) {
+      setIsButtonDisabled(selectedProduct.countInStock === 0);
+    }
+  }, [selectedProduct]);
 
   // Verificar si el producto fue encontrado
   if (!selectedProduct) {
@@ -36,22 +38,24 @@ const SingleProduct = () => {
     );
   }
 
-  // Agrega el método de pago al objeto shippingData
-  const updatedShippingData = {
-    ...shippingData,
-    countInStock: countInStock,
-    selectedProduct: selectedProduct._id
-  };
-
-
-
-  const handleClick = () => {
+  // Maneja el clic en el botón de comprar
+  const handleClick = (productId, quantity) => {
     if (!user) {    // Verificar si el usuario está autenticado
       navigate('/login'); // Redirigir al usuario a la página de inicio de sesión
-      return null;
-    } else {
-      navigate('/shipping', { state: { shippingData: updatedShippingData} });
+      return;
     }
+
+    // Actualiza el estado del contexto con los datos del pedido
+    setOrder(prevOrder => ({
+      ...prevOrder,
+      productos: [...prevOrder.productos, { id_producto: productId, cantidad: quantity }],
+      id_usuario: user?.id || prevOrder.id_usuario,
+      nombre_usuario: user?.username || prevOrder.nombre_usuario,
+      correo_electronico: user?.email || prevOrder.correo_electronico,
+    }));
+
+    // Navega a la página de dirección de envío
+    navigate('/shipping');
   };
 
   // Crea una lista de opciones basada en countInStock
@@ -59,10 +63,8 @@ const SingleProduct = () => {
     ? Array.from({ length: selectedProduct.countInStock }, (_, i) => i + 1)
     : [];
 
-  const handleChange = (event) => {
-    const value = parseInt(event.target.value, 10);
-    setShippingData({ ...shippingData });
-    setCountInStock(value);
+  const handleChange = (e) => {
+    setCountInStock(Number(e.target.value));
   };
 
   return (
@@ -86,7 +88,7 @@ const SingleProduct = () => {
                           {selectedProduct.name}
                         </Link>
                       </p>
-                      <p>countInStock {selectedProduct.countInStock}</p>
+                      <p>Count In Stock: {selectedProduct.countInStock}</p>
 
                       <Rating
                         value={selectedProduct.rating}
@@ -112,8 +114,9 @@ const SingleProduct = () => {
                       background: isButtonDisabled ? "#CCCCCC" : "#1cb803", // Cambiar color del botón si está deshabilitado
                       opacity: isButtonDisabled ? 0.5 : 1 // Cambiar opacidad del botón si está deshabilitado
                     }}
-                    onClick={handleClick}
-                    disabled={isButtonDisabled} >
+                    onClick={() => handleClick(selectedProduct._id, countInStock)}
+                    disabled={isButtonDisabled}
+                  >
                     Comprar
                   </button>
                 </div>

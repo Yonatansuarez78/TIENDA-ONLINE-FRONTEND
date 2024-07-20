@@ -1,29 +1,29 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
+
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useOrder } from '../context/OrderContext';
 
 const ShippingScreen = () => {
+  const { setOrder } = useOrder();
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Inicializa shippingData con los datos del estado de la ubicación si existen
-  const initialShippingData = location.state?.shippingData || {
-    country: "",
-    city: "",
-    address: ""
-  };
-
-  const [shippingData, setShippingData] = useState(initialShippingData);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setShippingData({ ...shippingData, [name]: value });
-  };
+  const [direccion, setDireccion] = useState({
+    pais: '',
+    ciudad: '',
+    direccion: ''
+  });
 
   const onSubmit = (e) => {
     e.preventDefault();
-    navigate('/payment', { state: { shippingData } });
+    setOrder(prevOrder => ({
+      ...prevOrder,
+      direccion
+    }));
+    navigate('/payment');
   };
+  
 
   return (
     <>
@@ -34,25 +34,22 @@ const ShippingScreen = () => {
           <input
             type="text"
             placeholder="Ingresa el país"
-            name="country"
-            value={shippingData.country}
-            onChange={handleChange}
+            value={direccion.pais}
+            onChange={(e) => setDireccion({ ...direccion, pais: e.target.value })}
             required
           />
           <input
             type="text"
             placeholder="Ingresa la ciudad"
-            name="city"
-            value={shippingData.city}
-            onChange={handleChange}
+            value={direccion.ciudad}
+            onChange={(e) => setDireccion({ ...direccion, ciudad: e.target.value })}
             required
           />
           <input
             type="text"
             placeholder="Ingresa la dirección"
-            name="address"
-            value={shippingData.address}
-            onChange={handleChange}
+            value={direccion.direccion}
+            onChange={(e) => setDireccion({ ...direccion, direccion: e.target.value })}
             required
           />
           <button type="submit">Continuar</button>

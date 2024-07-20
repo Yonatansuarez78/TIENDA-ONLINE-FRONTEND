@@ -1,33 +1,42 @@
 import React from "react";
-import products from "../data/Products";
 import { Link } from "react-router-dom";
 import Header from "./../components/Header";
-import { useAuth } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import { PayPalButton } from "react-paypal-button-v2";
+// import { PayPalButton } from "react-paypal-button-v2";
+
+import { useOrder } from '../context/OrderContext'
 
 import '../style/pages/placeorderscreen.css'
 
 
 const PlaceOrderScreen = () => {
+  const { order } = useOrder();
   const navigate = useNavigate();
-  const { user } = useAuth();
-  window.scrollTo(0, 0);
-  const location = useLocation();
 
-  const shippingData = location.state && location.state.shippingData;
-  const selectedProduct = products.find(product => product._id === shippingData.selectedProduct);
-  console.log(shippingData, selectedProduct)
+  const handlePlaceOrder = async () => {
+    try {
+      // Aquí puedes agregar lógica para enviar el pedido a la API si estás listo para hacerlo
+      console.log('Pedido listo para ser enviado:', order);
+      // Ejemplo de envío a la API
+      // const response = await fetch('/api/orders', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify(order),
+      // });
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    // Agrega el método de pago al objeto shippingData
-    const updatedShippingData = {
-      ...shippingData
-    };
-    console.log(shippingData)
-    // navigate('/order', { state: { shippingData: updatedShippingData } });
+      // if (response.ok) {
+      //   navigate('/order-confirmation');
+      // } else {
+      //   throw new Error('Error placing order');
+      // }
+
+      navigate('/order-confirmation'); // Navega a la página de confirmación si estás listo
+    } catch (error) {
+      console.error('Error placing order:', error);
+    }
   };
 
   return (
@@ -46,8 +55,8 @@ const PlaceOrderScreen = () => {
                 <h5>
                   <strong>Cliente</strong>
                 </h5>
-                <p>{user.username}</p>
-                <img src={`${process.env.PUBLIC_URL}/images/user.png`} alt="User Avatar" className="ImgUser"/> 
+                <p>{order.nombre_usuario || 'No disponible'}</p>
+                <img src={`${process.env.PUBLIC_URL}/images/user.png`} alt="User Avatar" className="ImgUser" />
               </div>
             </div>
           </div>
@@ -63,10 +72,10 @@ const PlaceOrderScreen = () => {
                 <h5>
                   <strong>Información del pedido</strong>
                 </h5>
-                <p>Pais: {shippingData.country}</p>
-                <p>Ciudad: {shippingData.city} </p>
-                <p>direccion: {shippingData.address} </p>
-                <p>paymentMethod: {shippingData.paymentMethod} </p>
+                <p>Pais: { order.direccion.pais || 'No disponible' }</p>
+                <p>Ciudad: {order.direccion.ciudad || 'No disponible'} </p>
+                <p>direccion: {order.direccion.direccion || 'No disponible'} </p>
+                <p>paymentMethod: {order.metodo_pago || 'No seleccionado'} </p>
               </div>
             </div>
           </div>
@@ -80,8 +89,8 @@ const PlaceOrderScreen = () => {
               </div>
               <div className="col-md-8 center">
                 <h5><strong>Entregar a</strong></h5>
-                  <p>{user.username}</p>
-                  <p>{user.email}</p>
+                <p> {order.nombre_usuario || 'No disponible'} </p>
+                <p> {order.correo_electronico || 'No disponible'} </p>
               </div>
             </div>
           </div>
@@ -89,18 +98,29 @@ const PlaceOrderScreen = () => {
 
         <div className="row order-products justify-content-between">
           <div className="col-lg-8">
-            {/* <Message variant="alert-info mt-5">Your cart is empty</Message> */}
 
             <div className="order-product row">
               <div className="col-md-3 col-6">
-                <img src={selectedProduct.image} alt="product" />
+                {/* LLAMAR A LA API, PARA MOSTRAR LOS DATOS DEL PRODUCTO */}
+                {/* <img src={selectedProduct.image} alt="product" /> */}
               </div>
               <div className="col-md-5 col-6 d-flex align-items-center">
-                  <h6>{selectedProduct.name}</h6>
+                {/* <h6>{selectedProduct.name}</h6> */}
               </div>
               <div className="mt-3 mt-md-0 col-md-2 col-6  d-flex align-items-center flex-column justify-content-center ">
                 <h4>CANTIDAD</h4>
-                <h6>{shippingData.countInStock}</h6>
+                {/* <h6> {order.productos.cantidad} </h6> */}
+                <ul>
+                  {order.productos.length > 0 ? (
+                    order.productos.map((producto, index) => (
+                      <li key={index}>
+                        <p> {producto.cantidad}</p>
+                      </li>
+                    ))
+                  ) : (
+                    <p>No hay productos en el pedido</p>
+                  )}
+                </ul>
               </div>
             </div>
           </div>
@@ -110,11 +130,11 @@ const PlaceOrderScreen = () => {
               <tbody>
                 <tr>
                   <td><strong>Precio unitario</strong></td>
-                  <td>{selectedProduct.price}</td>
+                  <td>10000</td>
                 </tr>
                 <tr>
                   <td><strong>Precio total</strong></td>
-                  <td>{selectedProduct.price * shippingData.countInStock}</td>
+                  <td>20000</td>
                 </tr>
                 <tr>
                   <td><strong>iva</strong></td>
@@ -122,16 +142,13 @@ const PlaceOrderScreen = () => {
                 </tr>
                 <tr>
                   <td><strong>Total</strong></td>
-                  <td>{((selectedProduct.price * shippingData.countInStock) * 1.19)}</td>
+                  <td>23000</td>
                 </tr>
               </tbody>
             </table>
-            <button type="submit" onClick={onSubmit}>
-                REALIZAR PEDIDO
+            <button type="submit">
+              REALIZAR PEDIDO
             </button>
-            {/* <div className="col-12">
-              <PayPalButton amount={345} onClick={onSubmit} type="submit"/>
-            </div> */}
             {/* <div className="my-3 col-12">
                 <Message variant="alert-danger">{error}</Message>
               </div> */}
