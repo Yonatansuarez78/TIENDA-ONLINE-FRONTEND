@@ -20,7 +20,9 @@ export const OrderProvider = ({ children }) => {
         productos: [], //elegido por usuario
         infoProduct: [], //elegido por usuario, envio al context la informacion del producto (data)
         direccion: { pais: '', ciudad: '', direccion: '' },
-        metodo_pago: ''
+        metodo_pago: '',
+        precioTotal: '',
+        totalConIva: ''
     });
 
     return (

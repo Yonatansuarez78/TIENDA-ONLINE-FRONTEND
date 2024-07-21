@@ -33,9 +33,7 @@ const PlaceOrderScreen = () => {
         price: 0
       };
     }
-
     const firstProduct = order.infoProduct[0];
-
     return {
       name: firstProduct.name,
       price: firstProduct.price
@@ -43,15 +41,28 @@ const PlaceOrderScreen = () => {
   };
   const infoProducts = infoProduct();
 
-
+//traer datos del precio
+  const precioTotal = infoProducts.price * ProductsCantidad
+  const totalConIva = (infoProducts.price * ProductsCantidad) * 1.19
 
   const handlePlaceOrder = async () => {
     try {
-      console.log('Pedido listo para ser enviado:', order);
-      const response = await axios.post('/orders', order);
+      const updatedOrder = { ...order, precioTotal, totalConIva };//agregamos los datos del precio pedido, al context
+      console.log('Pedido listo para ser enviado:', updatedOrder);
+      const response = await axios.post('/orders', updatedOrder);
       if (response.status === 200) {
         createAlert('Pedido realizado exitosamente', 'success');
-        setTimeout(() => { navigate('/');   }, 5000);
+
+        setOrder({ productos: [], 
+          infoProduct: [], 
+          nombre_usuario: '', 
+          correo_electronico: '', 
+          direccion: { direccion: '', ciudad: '', pais: '' },
+          metodo_pago: '',
+          precioTotal: '',
+          totalConIva: ''
+        });
+        setTimeout(() => { navigate('/'); }, 5000);
       } else {
         throw new Error('Error placing order');
       }
@@ -104,7 +115,7 @@ const PlaceOrderScreen = () => {
                 <h5>
                   <strong>Información del pedido</strong>
                 </h5>
-                <p>Pais: { order.direccion.pais || 'No disponible' }</p>
+                <p>Pais: {order.direccion.pais || 'No disponible'}</p>
                 <p>Ciudad: {order.direccion.ciudad || 'No disponible'} </p>
                 <p>direccion: {order.direccion.direccion || 'No disponible'} </p>
                 <p>paymentMethod: {order.metodo_pago || 'No seleccionado'} </p>

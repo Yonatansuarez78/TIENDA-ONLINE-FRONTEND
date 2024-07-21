@@ -1,0 +1,14 @@
+.list-group-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.top-left-content {
+    align-self: flex-start;
+}
+
+.bottom-right-content {
+    align-self: flex-end;
+    text-align: right;
+}
