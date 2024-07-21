@@ -47,8 +47,8 @@ const PlaceOrderScreen = () => {
 
   const handlePlaceOrder = async () => {
     try {
-      const updatedOrder = { ...order, precioTotal, totalConIva };//agregamos los datos del precio pedido, al context
-      console.log('Pedido listo para ser enviado:', updatedOrder);
+      const updatedOrder = { ...order, precioTotal, totalConIva }      //agregamos los datos del precio pedido, al context
+      // console.log('Pedido listo para ser enviado:', updatedOrder);
       const response = await axios.post('/orders', updatedOrder);
       if (response.status === 200) {
         createAlert('Pedido realizado exitosamente', 'success');

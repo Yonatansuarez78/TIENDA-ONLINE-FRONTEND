@@ -11,8 +11,13 @@ function Pedidos() {
   useEffect(() => {
     const fetchPedidos = async () => {
       try {
-        const response = await axios.get('/orders'); 
-        setPedidos(response.data);
+        const response = await axios.get('/orders');
+        if (response.data.message) {
+          console.log(response.data.message);
+          setPedidos([]); // O manejarlo de la forma que prefieras
+        } else {
+          setPedidos(response.data);
+        }
       } catch (err) {
         console.error('Error fetching orders:', err);
         setError(err);
@@ -20,6 +25,7 @@ function Pedidos() {
         setLoading(false);
       }
     };
+
 
     fetchPedidos();
   }, []);
