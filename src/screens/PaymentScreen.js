@@ -84,7 +84,7 @@ const PaymentScreen = () => {
                 onChange={(e) => setMetodoPago(e.target.value)}
                 required
               />
-              <label className="form-check-label" htmlFor="paypal"> PayPal o tarjeta de crédito</label>
+              <label className="form-check-label" htmlFor="paypal">Efectivo</label>
             </div>
             <div className="radio-container">
               <input
@@ -92,11 +92,11 @@ const PaymentScreen = () => {
                 type="radio"
                 name="paymentMethod"
                 id="Efectivo"
-                value="Efectivo"
+                value="Pago contra entrega"
                 onChange={(e) => setMetodoPago(e.target.value)}
                 required
               />
-              <label className="form-check-label" htmlFor="stripe">Efectivo</label>
+              <label className="form-check-label" htmlFor="stripe">Pago contra entrega</label>
             </div>
             <div className="radio-container">
               <input
@@ -108,7 +108,7 @@ const PaymentScreen = () => {
                 onChange={(e) => setMetodoPago(e.target.value)}
                 required
               />
-              <label className="form-check-label" htmlFor="stripe">Tarjeta</label>
+              <label className="form-check-label" htmlFor="stripe">Tarjeta de credito o debito</label>
             </div>
             {/* Agrega más opciones de método de pago si es necesario */}
           </div>

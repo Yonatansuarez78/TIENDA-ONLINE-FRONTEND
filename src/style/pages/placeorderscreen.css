@@ -2,3 +2,12 @@
     width: 100px;
     height: 100px;
 }
+
+/* Estilo para el contenedor de alertas */
+#liveAlertPlaceholder {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1050;
+    /* Asegúrate de que esté encima de otros elementos */
+}

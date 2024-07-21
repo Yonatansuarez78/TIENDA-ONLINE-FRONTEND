@@ -17,7 +17,8 @@ export const OrderProvider = ({ children }) => {
         id_usuario: null,
         nombre_usuario: '',
         correo_electronico: '',
-        productos: [],
+        productos: [], //elegido por usuario
+        infoProduct: [], //elegido por usuario, envio al context la informacion del producto (data)
         direccion: { pais: '', ciudad: '', direccion: '' },
         metodo_pago: ''
     });

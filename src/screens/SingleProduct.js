@@ -48,7 +48,12 @@ const SingleProduct = () => {
     // Actualiza el estado del contexto con los datos del pedido
     setOrder(prevOrder => ({
       ...prevOrder,
-      productos: [...prevOrder.productos, { id_producto: productId, cantidad: quantity }],
+      productos: [...prevOrder.productos, {
+        id_producto: productId,
+        cantidad: quantity
+      }],
+      infoProduct: [...prevOrder.infoProduct, selectedProduct],
+      
       id_usuario: user?.id || prevOrder.id_usuario,
       nombre_usuario: user?.username || prevOrder.nombre_usuario,
       correo_electronico: user?.email || prevOrder.correo_electronico,
