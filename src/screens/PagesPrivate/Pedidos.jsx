@@ -11,8 +11,7 @@ function Pedidos() {
   useEffect(() => {
     const fetchPedidos = async () => {
       try {
-        // const response = await axios.get('/orders');
-        const response = await axios.get('/orders', { withCredentials: true });
+        const response = await axios.get('/orders');
         if (response.data.message) {
           console.log(response.data.message);
           setPedidos([]); // O manejarlo de la forma que prefieras
