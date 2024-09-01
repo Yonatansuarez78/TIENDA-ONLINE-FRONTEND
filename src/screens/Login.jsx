@@ -33,7 +33,7 @@ const Login = () => {
           <input type="password" placeholder="password" {...register("password", { required: true })} />
           {errors.password && (<p className='text-danger' style={{ fontSize: '13px' }}>Contraseña es requerida</p>)}
           
-          <Link to={"/ResetPassword"}>Olvidaste tu contraseña</Link>
+          <Link to={"/ForgotPassword"}>Olvidaste tu contraseña</Link>
 
           <button type="submit">Inicia sesión</button>
           <p>
