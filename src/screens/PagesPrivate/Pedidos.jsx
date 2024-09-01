@@ -26,12 +26,8 @@ function Pedidos() {
       }
     };
 
-
     fetchPedidos();
   }, []);
-
-  if (loading) return <p>Cargando...</p>;
-  if (error) return <p>Error al cargar pedidos: {error.message}</p>;
 
   return (
     <div>
