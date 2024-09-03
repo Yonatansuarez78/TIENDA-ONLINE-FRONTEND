@@ -1,7 +1,7 @@
 import axios from './axios'
 
-const API = 'http://localhost:4000/api'
-// const API = 'https://tienda-online-backend.vercel.app/api'
+// const API = 'http://localhost:4000/api'
+const API = 'https://whispering-beyond-09111-acac443e4a38.herokuapp.com/api'
 
 export const registerRequest = user => axios.post(`/register`, user)
 
