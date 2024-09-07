@@ -1,7 +1,7 @@
 import axios from './axios'
 
-// const API = 'http://localhost:4000/api'
-const API = 'https://onlinestore-6b35bdf62a93.herokuapp.com/api'
+const API = 'http://localhost:4000/api'
+// const API = 'https://onlinestore-6b35bdf62a93.herokuapp.com/api'
 
 export const registerRequest = user => axios.post(`/register`, user)
 
