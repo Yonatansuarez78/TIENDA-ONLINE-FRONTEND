@@ -68,7 +68,7 @@ const Header = () => {
                     </button>
                     <ul class="dropdown-menu">
                       <li><Link class="dropdown-item" to="/login">Inicia sesion</Link></li>
-                      <li><Link class="dropdown-item" to="http://localhost:5173">Sesion admin</Link></li>
+                      <li><Link class="dropdown-item" to="https://tienda-online-dashboard-admin.vercel.app">Sesion admin</Link></li>
                     </ul>
                   </div>
                 </div>
