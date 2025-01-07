@@ -28,6 +28,7 @@ const ProfileTabs = () => {
       }
 
       const response = await axios.put('/updateProfile', updateData);
+      console.log(response)
 
       if (response.status === 200) {
         createAlert('Actualización realizada exitosamente', 'success');
