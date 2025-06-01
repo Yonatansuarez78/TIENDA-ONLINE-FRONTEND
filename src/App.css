@@ -40,7 +40,7 @@ textarea:focus {
   padding: 0;
 }
 .Announcement {
-  background-color: #1cb803;
+  background-color: rgb(28, 184, 3);
   padding: 10px 0px 6px 0px;
 }
 .Announcement .col-md-6 p {
