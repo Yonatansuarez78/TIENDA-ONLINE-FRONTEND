@@ -14,6 +14,7 @@ const PlaceOrderScreen = () => {
 
   // Función para obtener cantidad de productos del estado - products
   const ProductCantidad = () => {
+    console.log(order.metodo_pago)
     if (order.productos.length === 0) {
       return 0;
     }

@@ -80,7 +80,7 @@ const PaymentScreen = () => {
                 type="radio"
                 name="paymentMethod"
                 id="paypal"
-                value="PayPal"
+                value="Efectivo"
                 onChange={(e) => setMetodoPago(e.target.value)}
                 required
               />
