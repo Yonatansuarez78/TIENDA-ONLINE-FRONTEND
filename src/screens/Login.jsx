@@ -27,10 +27,10 @@ const Login = () => {
       <div className="container d-flex flex-column justify-content-center align-items-center login-center">
         {signinErrors.map((error, i) => (<div className='bg-danger-subtle text-black font-bold text-center m-2' key={i}>{error}</div>))}
         <form className="Login col-md-8 col-lg-4 col-11" onSubmit={onSubmit}>
-          <input type="email" placeholder="Email" {...register("email", { required: true })} />
+          <input type="email" placeholder="Email" autoComplete="email" {...register("email", { required: true })}/>
           {errors.email && (<p className='text-danger' style={{ fontSize: '13px' }}>Correo electronico es requerido</p>)}
 
-          <input type="password" placeholder="password" {...register("password", { required: true })} />
+          <input type="password" placeholder="password" autoComplete="current-password" {...register("password", { required: true })} />
           {errors.password && (<p className='text-danger' style={{ fontSize: '13px' }}>Contraseña es requerida</p>)}
           
           <Link to={"/ForgotPassword"}>Olvidaste tu contraseña</Link>
